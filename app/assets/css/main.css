@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import url("colors.css");
+@import url("fonts.css");
+@import url("typography.css");
+@import url("layout.css");
+@import url("components.css");
+
+* {
+	@apply p-0 m-0 box-border;
+}
+
+html,
+body {
+	@apply bg-(--color-background) text-(--color-text) font-sans;
+}

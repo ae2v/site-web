@@ -1,0 +1,96 @@
+:root {
+	/* Brand */
+	--color-primary: #e9117d;
+	--color-primary-dark: #c40e69;
+	--color-primary-light: #f03191;
+	--color-primary-lighter: #f468ae;
+	--color-secondary: #d2e61d;
+	--color-tertiary: #56d7ff;
+
+	/* Base layout */
+	--color-background: #0b0b0f;
+	--color-background-elevated: #111117;
+	--color-background-muted: #17171f;
+	--color-text: #f5f7ff;
+	--color-text-muted: #b9bfd6;
+	--color-border: #2a2d3a;
+
+	/* Surfaces */
+	--color-surface: #141620;
+	--color-surface-2: #1b1d28;
+	--color-surface-3: #222533;
+	--color-surface-text: #ffffff;
+	--color-surface-text-faded: #ffffffd9;
+	--color-surface-border: #313548;
+
+	/* Buttons */
+	--color-button-primary-bg: var(--color-primary);
+	--color-button-primary-hover: var(--color-primary-dark);
+	--color-button-primary-text: #ffffff;
+	--color-button-secondary-bg: #263041;
+	--color-button-secondary-hover: #334159;
+	--color-button-secondary-text: #e9f1ff;
+	--color-button-tertiary-bg: #23222f;
+	--color-button-tertiary-hover: #2f2d3f;
+	--color-button-tertiary-text: #f3ecff;
+	--color-button-ghost-bg: transparent;
+	--color-button-ghost-hover: #ffffff1a;
+	--color-button-ghost-text: var(--color-text);
+	--color-button-disabled-bg: #2f3444;
+	--color-button-disabled-text: #8b93ab;
+	--color-button-disabled-border: #434a5f;
+
+	/* Forms */
+	--color-input-bg: #0f1320;
+	--color-input-text: #f0f4ff;
+	--color-input-placeholder: #8f97af;
+	--color-input-border: #32384d;
+	--color-input-hover-border: #4b5470;
+	--color-input-focus-border: var(--color-primary-light);
+	--color-input-focus-ring: #f0319140;
+	--color-input-disabled-bg: #1c2130;
+	--color-input-disabled-text: #9098af;
+	--color-input-disabled-border: #2f3548;
+	--color-label: #d8dff5;
+	--color-help-text: #9ea6c0;
+
+	/* Feedback states */
+	--color-success: #22c55e;
+	--color-success-dark: #16a34a;
+	--color-success-soft: #22c55e26;
+	--color-warning: #f59e0b;
+	--color-warning-dark: #d97706;
+	--color-warning-soft: #f59e0b26;
+	--color-danger: #ef4444;
+	--color-danger-dark: #dc2626;
+	--color-danger-soft: #ef444426;
+	--color-info: #38bdf8;
+	--color-info-dark: #0ea5e9;
+	--color-info-soft: #38bdf826;
+
+	/* Badges */
+	--color-badge-neutral-bg: #374151;
+	--color-badge-neutral-text: #f9fafb;
+	--color-badge-primary-bg: #be185d;
+	--color-badge-primary-text: #fff1f7;
+	--color-badge-success-bg: #166534;
+	--color-badge-success-text: #dcfce7;
+	--color-badge-warning-bg: #78350f;
+	--color-badge-warning-text: #fef3c7;
+	--color-badge-danger-bg: #7f1d1d;
+	--color-badge-danger-text: #fee2e2;
+
+	/* Navigation and cards */
+	--color-navbar-bg: #121520e6;
+	--color-navbar-border: #2a3044;
+	--color-navbar-text: #f3f7ff;
+	--color-card-bg: #171a26;
+	--color-card-border: #2f354a;
+	--color-card-hover: #1f2435;
+
+	/* Overlays */
+	--color-overlay: #05070ecc;
+	--color-overlay-soft: #05070e66;
+	--color-tooltip-bg: #0f172a;
+	--color-tooltip-text: #f8fafc;
+}
