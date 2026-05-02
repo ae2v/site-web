@@ -1,1 +1,1 @@
-// Raccourci pour un item de la boutique
+export default defineEventHandler(() => ({ ok: true, route: "p-id" }));

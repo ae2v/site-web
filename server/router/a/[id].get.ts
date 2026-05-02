@@ -1,1 +1,1 @@
-// Raccourci pour récupérer un article de blog
+export default defineEventHandler(() => ({ ok: true, route: "a-id" }));

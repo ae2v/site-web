@@ -1,5 +1,5 @@
 import { useDb } from "~~/server/db/client";
-import { events as eventsTable } from "~~/server/db/schema";
+import { members as membersTable } from "~~/server/db/schema";
 
 import { eq } from "drizzle-orm";
 
@@ -7,19 +7,16 @@ export default defineEventHandler(async (event) => {
 	const db = useDb();
 	const { id } = event.context.params as { id: string };
 
-	const data = await db
-		.select()
-		.from(eventsTable)
-		.where(eq(eventsTable.id, Number(id)));
+	const data = await db.select().from(membersTable).where(eq(membersTable.id, Number(id)));
 
 	if (data.length === 0) {
 		throw createError({
 			statusCode: 404,
-			message: "Event not found",
+			message: "Member not found",
 		});
 	}
 
-	const _event = data[0];
+	const member = data[0];
 
-	return _event;
+	return member;
 });

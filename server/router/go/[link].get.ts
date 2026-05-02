@@ -1,1 +1,1 @@
-// Raccourci pour un lien quelconque
+export default defineEventHandler(() => ({ ok: true, route: "go-link" }));

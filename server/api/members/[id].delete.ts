@@ -1,4 +1,4 @@
 export default defineEventHandler(() => ({
 	ok: true,
-	route: "blog-id-delete",
+	route: "members-id-delete",
 }));
