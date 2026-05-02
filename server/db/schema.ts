@@ -1,4 +1,4 @@
-import { pgTable, serial, text, varchar, integer, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, varchar, integer, timestamp, pgEnum } from "drizzle-orm/pg-core";
 
 export const poleEnum = pgEnum("pole", [
 	"DIRECTION",
@@ -41,7 +41,8 @@ export const events = pgTable("events", {
 	id: serial("id").primaryKey(),
 	title: text("title").notNull(),
 	description: text("description").notNull(),
-	date: text("date").notNull(),
+	date: timestamp("date").notNull(),
+	endDate: timestamp("end_date"),
 	location: text("location").notNull(),
 	photoUrl: text("photo_url"),
 	link: text("link"),
