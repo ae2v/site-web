@@ -2,14 +2,30 @@
 
 @font-face {
 	font-family: "Inter";
-	src: url("/assets/fonts/Inter-VariableFont_opsz,wght.ttf")
+	src: url("/fonts/Inter-VariableFont_opsz,wght.ttf")
 		format("truetype");
 	font-style: normal;
 }
 
 @font-face {
 	font-family: "Inter";
-	src: url("/assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf")
+	src: url("/fonts/Inter-Italic-VariableFont_opsz,wght.ttf")
+		format("truetype");
+	font-style: italic;
+}
+
+/* Roboto Serif */
+
+@font-face {
+	font-family: "Roboto Serif";
+	src: url("/fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf")
+		format("truetype");
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Roboto Serif";
+	src: url("/fonts/RobotoSerif-Italic-VariableFont_GRAD,opsz,wdth,wght.ttf")
 		format("truetype");
 	font-style: italic;
 }
@@ -18,4 +34,5 @@
 
 :root {
 	--font-sans: "Inter", Arial, sans-serif;
+	--font-title: "Roboto Serif", Georgia, serif;
 }

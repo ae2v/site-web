@@ -1,18 +1,41 @@
-:root {
+@theme {
 	/* Brand */
-	--color-primary: #e9117d;
-	--color-primary-dark: #c40e69;
-	--color-primary-light: #f03191;
-	--color-primary-lighter: #f468ae;
-	--color-secondary: #d2e61d;
-	--color-tertiary: #56d7ff;
+	--color-primary: #de0a2d;
+	--color-primary-dark: #b80825;
+	--color-primary-light: #f62d4e;
+	--color-primary-lighter: #f8667e;
+
+	--color-MMI: #54137a;
+	--color-MMI-light: #771bad;
+	--color-MMI-lighter: #a137e0;
+	--color-MMI-faded: #c17bea;
+
+	--color-INFO: #874211;
+	--color-INFO-light: #bb5b18;
+	--color-INFO-lighter: #e6823b;
+	--color-INFO-faded: #efae80;
+
+	--color-RT: #0a8610;
+	--color-RT-light: #0ebd16;
+	--color-RT-lighter: #29f033;
+	--color-RT-faded: #72f579;
+
+	--color-GEII: #074b94;
+	--color-GEII-light: #0a67cc;
+	--color-GEII-lighter: #308ef5;
+	--color-GEII-faded: #7ab7f9;
+
+	--color-MRIT: #008d7b;
+	--color-MRIT-light: #00c8ae;
+	--color-MRIT-lighter: #17ffe1;
+	--color-MRIT-faded: #66ffeb;
 
 	/* Base layout */
 	--color-background: #0b0b0f;
 	--color-background-elevated: #111117;
 	--color-background-muted: #17171f;
 	--color-text: #f5f7ff;
-	--color-text-muted: #b9bfd6;
+	--color-muted: #b9bfd6;
 	--color-border: #2a2d3a;
 
 	/* Surfaces */
