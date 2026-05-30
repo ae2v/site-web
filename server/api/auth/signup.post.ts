@@ -15,7 +15,7 @@ function hashPassword(password: string) {
 export default defineEventHandler(async (event) => {
 	const body = await readBody(event).catch(() => ({}));
 
-	const { firstName, lastName, email, password, pole } = body as Record<
+	const { firstName, lastName, email, password, studentId } = body as Record<
 		string,
 		any
 	>;
@@ -38,6 +38,7 @@ export default defineEventHandler(async (event) => {
 			lastName,
 			email,
 			passwordHash,
+			studentId: studentId ? String(studentId) : null,
 		})
 		.returning();
 
