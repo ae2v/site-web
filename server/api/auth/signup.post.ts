@@ -45,21 +45,19 @@ export default defineEventHandler(async (event) => {
 	const created = Array.isArray(inserted) ? inserted[0]! : inserted;
 
 	let token: string | undefined;
-	if (pole === "DIRECTION") {
-		token = createAuthToken(
-			{ sub: String(created.id), account: created, profile: null },
-			{ expiresIn: "8h" },
-		);
+	token = createAuthToken(
+		{ sub: String(created.id), account: created, profile: null },
+		{ expiresIn: "8h" },
+	);
 
-		const { setCookie } = await import("h3");
-		setCookie(event, "authToken", token, {
-			httpOnly: true,
-			secure: process.env.NODE_ENV === "production",
-			sameSite: "lax",
-			path: "/",
-			maxAge: 60 * 60 * 8,
-		});
-	}
+	const { setCookie } = await import("h3");
+	setCookie(event, "authToken", token, {
+		httpOnly: true,
+		secure: process.env.NODE_ENV === "production",
+		sameSite: "lax",
+		path: "/",
+		maxAge: 60 * 60 * 8,
+	});
 
 	return { user: created };
 });
