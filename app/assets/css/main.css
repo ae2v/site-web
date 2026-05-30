@@ -8,129 +8,128 @@
 @theme {
 	--font-sans: "Inter", Arial, sans-serif;
 	--font-title: "Roboto Serif", Georgia, serif;
+	--font-display: "Bodoni Moda", "Times New Roman", serif;
 
 	/* Brand */
-	--color-primary: #de0a2d;
-	--color-primary-dark: #b80825;
-	--color-primary-light: #f62d4e;
-	--color-primary-lighter: #f8667e;
+	--color-primary: var(--clr-primary);
+	--color-primary-dark: var(--clr-primary-dark);
+	--color-primary-light: var(--clr-primary-light);
+	--color-primary-lighter: var(--clr-primary-lighter);
 
-	--color-MMI: #54137a;
-	--color-MMI-light: #771bad;
-	--color-MMI-lighter: #a137e0;
-	--color-MMI-faded: #c17bea;
+	--color-MMI: var(--clr-MMI);
+	--color-MMI-light: var(--clr-MMI-light);
+	--color-MMI-lighter: var(--clr-MMI-lighter);
+	--color-MMI-faded: var(--clr-MMI-faded);
 
-	--color-INFO: #874211;
-	--color-INFO-light: #bb5b18;
-	--color-INFO-lighter: #e6823b;
-	--color-INFO-faded: #efae80;
+	--color-INFO: var(--clr-INFO);
+	--color-INFO-light: var(--clr-INFO-light);
+	--color-INFO-lighter: var(--clr-INFO-lighter);
+	--color-INFO-faded: var(--clr-INFO-faded);
 
-	--color-RT: #0a8610;
-	--color-RT-light: #0ebd16;
-	--color-RT-lighter: #29f033;
-	--color-RT-faded: #72f579;
+	--color-RT: var(--clr-RT);
+	--color-RT-light: var(--clr-RT-light);
+	--color-RT-lighter: var(--clr-RT-lighter);
+	--color-RT-faded: var(--clr-RT-faded);
 
-	--color-GEII: #074b94;
-	--color-GEII-light: #0a67cc;
-	--color-GEII-lighter: #308ef5;
-	--color-GEII-faded: #7ab7f9;
+	--color-GEII: var(--clr-GEII);
+	--color-GEII-light: var(--clr-GEII-light);
+	--color-GEII-lighter: var(--clr-GEII-lighter);
+	--color-GEII-faded: var(--clr-GEII-faded);
 
-	--color-MRIT: #008d7b;
-	--color-MRIT-light: #00c8ae;
-	--color-MRIT-lighter: #17ffe1;
-	--color-MRIT-faded: #66ffeb;
+	--color-MRIT: var(--clr-MRIT);
+	--color-MRIT-light: var(--clr-MRIT-light);
+	--color-MRIT-lighter: var(--clr-MRIT-lighter);
+	--color-MRIT-faded: var(--clr-MRIT-faded);
 
 	/* Base layout */
-	--color-background: #0b0b0f;
-	--color-background-elevated: #111117;
-	--color-background-muted: #17171f;
-	--color-text: #f5f7ff;
-	--color-muted: #b9bfd6;
-	--color-border: #2a2d3a;
+	--color-background: var(--clr-background);
+	--color-background-elevated: var(--clr-background-elevated);
+	--color-background-muted: var(--clr-background-muted);
+	--color-text: var(--clr-text);
+	--color-muted: var(--clr-muted);
+	--color-border: var(--clr-border);
 
 	/* Surfaces */
-	--color-surface: #141620;
-	--color-surface-2: #1b1d28;
-	--color-surface-3: #222533;
-	--color-surface-text: #ffffff;
-	--color-surface-text-faded: #ffffffd9;
-	--color-surface-border: #313548;
+	--color-surface: var(--clr-surface);
+	--color-surface-2: var(--clr-surface-2);
+	--color-surface-3: var(--clr-surface-3);
+	--color-surface-text: var(--clr-surface-text);
+	--color-surface-text-faded: var(--clr-surface-text-faded);
+	--color-surface-border: var(--clr-surface-border);
 
 	/* Buttons */
-	--color-button-primary-bg: var(--color-primary);
-	--color-button-primary-hover: var(--color-primary-dark);
-	--color-button-primary-text: #ffffff;
-	--color-button-secondary-bg: #263041;
-	--color-button-secondary-hover: #334159;
-	--color-button-secondary-text: #e9f1ff;
-	--color-button-tertiary-bg: #23222f;
-	--color-button-tertiary-hover: #2f2d3f;
-	--color-button-tertiary-text: #f3ecff;
-	--color-button-ghost-bg: transparent;
-	--color-button-ghost-hover: #ffffff1a;
-	--color-button-ghost-text: var(--color-text);
-	--color-button-disabled-bg: #2f3444;
-	--color-button-disabled-text: #8b93ab;
-	--color-button-disabled-border: #434a5f;
+	--color-button: var(--clr-button);
+	--color-button-hover: var(--clr-button-hover);
+	--color-button-text: var(--clr-button-text);
+	--color-button-primary: var(--clr-button-primary);
+	--color-button-primary-hover: var(--clr-button-primary-hover);
+	--color-button-primary-text: var(--clr-button-primary-text);
+	--color-button-ghost: var(--clr-button-ghost);
+	--color-button-ghost-hover: var(--clr-button-ghost-hover);
+	--color-button-ghost-text: var(--clr-button-ghost-text);
+	--color-button-disabled: var(--clr-button-disabled);
+	--color-button-disabled-text: var(--clr-button-disabled-text);
+	--color-button-disabled-border: var(--clr-button-disabled-border);
 
 	/* Forms */
-	--color-input-bg: #0f1320;
-	--color-input-text: #f0f4ff;
-	--color-input-placeholder: #8f97af;
-	--color-input-border: #32384d;
-	--color-input-hover-border: #4b5470;
-	--color-input-focus-border: var(--color-primary-light);
-	--color-input-focus-ring: #f0319140;
-	--color-input-disabled-bg: #1c2130;
-	--color-input-disabled-text: #9098af;
-	--color-input-disabled-border: #2f3548;
-	--color-label: #d8dff5;
-	--color-help-text: #9ea6c0;
+	--color-input: var(--clr-input);
+	--color-input-text: var(--clr-input-text);
+	--color-input-placeholder: var(--clr-input-placeholder);
+	--color-input-border: var(--clr-input-border);
+	--color-input-hover-border: var(--clr-input-hover-border);
+	--color-input-focus-border: var(--clr-input-focus-border);
+	--color-input-focus-ring: var(--clr-input-focus-ring);
+	--color-input-disabled: var(--clr-input-disabled);
+	--color-input-disabled-text: var(--clr-input-disabled-text);
+	--color-input-disabled-border: var(--clr-input-disabled-border);
+	--color-label: var(--clr-label);
+	--color-help-text: var(--clr-help-text);
 
 	/* Feedback states */
-	--color-success: #22c55e;
-	--color-success-dark: #16a34a;
-	--color-success-soft: #22c55e26;
-	--color-warning: #f59e0b;
-	--color-warning-dark: #d97706;
-	--color-warning-soft: #f59e0b26;
-	--color-danger: #ef4444;
-	--color-danger-dark: #dc2626;
-	--color-danger-soft: #ef444426;
-	--color-info: #38bdf8;
-	--color-info-dark: #0ea5e9;
-	--color-info-soft: #38bdf826;
+	--color-success: var(--clr-success);
+	--color-success-dark: var(--clr-success-dark);
+	--color-success-soft: var(--clr-success-soft);
+	--color-warning: var(--clr-warning);
+	--color-warning-dark: var(--clr-warning-dark);
+	--color-warning-soft: var(--clr-warning-soft);
+	--color-danger: var(--clr-danger);
+	--color-danger-dark: var(--clr-danger-dark);
+	--color-danger-soft: var(--clr-danger-soft);
+	--color-info: var(--clr-info);
+	--color-info-dark: var(--clr-info-dark);
+	--color-info-soft: var(--clr-info-soft);
 
 	/* Badges */
-	--color-badge-neutral-bg: #374151;
-	--color-badge-neutral-text: #f9fafb;
-	--color-badge-primary-bg: #be185d;
-	--color-badge-primary-text: #fff1f7;
-	--color-badge-success-bg: #166534;
-	--color-badge-success-text: #dcfce7;
-	--color-badge-warning-bg: #78350f;
-	--color-badge-warning-text: #fef3c7;
-	--color-badge-danger-bg: #7f1d1d;
-	--color-badge-danger-text: #fee2e2;
+	--color-badge-neutral: var(--clr-badge-neutral);
+	--color-badge-neutral-text: var(--clr-badge-neutral-text);
+	--color-badge-primary: var(--clr-badge-primary);
+	--color-badge-primary-text: var(--clr-badge-primary-text);
+	--color-badge-success: var(--clr-badge-success);
+	--color-badge-success-text: var(--clr-badge-success-text);
+	--color-badge-warning: var(--clr-badge-warning);
+	--color-badge-warning-text: var(--clr-badge-warning-text);
+	--color-badge-danger: var(--clr-badge-danger);
+	--color-badge-danger-text: var(--clr-badge-danger-text);
 
 	/* Navigation and cards */
-	--color-navbar-bg: #121520e6;
-	--color-navbar-border: #2a3044;
-	--color-navbar-text: #f3f7ff;
-	--color-card-bg: #171a26;
-	--color-card-border: #2f354a;
-	--color-card-hover: #1f2435;
+	--color-navbar: var(--clr-navbar);
+	--color-navbar-border: var(--clr-navbar-border);
+	--color-navbar-text: var(--clr-navbar-text);
+	--color-card: var(--clr-card);
+	--color-card-border: var(--clr-card-border);
+	--color-card-hover: var(--clr-card-hover);
 
 	/* Overlays */
-	--color-overlay: #05070ecc;
-	--color-overlay-soft: #05070e66;
-	--color-tooltip-bg: #0f172a;
-	--color-tooltip-text: #f8fafc;
+	--color-overlay: var(--clr-overlay);
+	--color-overlay-soft: var(--clr-overlay-soft);
+	--color-tooltip: var(--clr-tooltip);
+	--color-tooltip-text: var(--clr-tooltip-text);
 }
 
 :root {
 	--font-sans-fallback: "Inter", Arial, sans-serif;
 	--font-title-fallback: "Roboto Serif", Georgia, serif;
+	--font-display-fallback: "Bodoni Moda", "Times New Roman", serif;
 }
 
 * {

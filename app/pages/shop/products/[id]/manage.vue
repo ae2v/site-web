@@ -1,1 +1,3 @@
-<!-- Page de gestion du produit -->
+<template>
+	<main class="min-h-screen"></main>
+</template>

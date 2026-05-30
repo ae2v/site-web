@@ -1,1 +1,3 @@
-<!-- Page du feed du blog -->
+<template>
+	<main class="min-h-screen"></main>
+</template>

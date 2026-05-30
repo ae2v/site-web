@@ -1,1 +1,3 @@
-<!-- Nouvel article du blog -->
+<template>
+	<main class="min-h-screen"></main>
+</template>

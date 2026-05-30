@@ -4,15 +4,20 @@ export type Pole =
 	| "COMMUNICATION"
 	| "DÉVELOPPEMENT"
 	| "MARKETING"
-	| "MEMBRES";
-export type Role = "Président" | "Vice-Président" | "Trésorier" | "Secrétaire" | "Membre";
+	| "ÉVÉNEMENTIEL";
+
+export type Role =
+	| "Président"
+	| "Vice-Président"
+	| "Trésorier"
+	| "Secrétaire"
+	| "Membre";
 
 export interface Member {
 	id: number;
 	firstName: string;
 	lastName: string;
 	pronouns: string | null;
-	email: string;
 	discord: string | null;
 	pole: Pole;
 	role: Role;

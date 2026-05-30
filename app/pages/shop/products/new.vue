@@ -1,1 +1,3 @@
-<!-- Nouveau produit du magasin -->
+<template>
+	<main class="min-h-screen"></main>
+</template>

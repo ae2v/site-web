@@ -1,15 +1,14 @@
-/* Inter */
+/* Bodoni Moda */
 
 @font-face {
-	font-family: "Inter";
-	src: url("/fonts/Inter-VariableFont_opsz,wght.ttf")
-		format("truetype");
+	font-family: "Bodoni Moda";
+	src: url("/fonts/BodoniModa-VariableFont_opsz,wght.ttf") format("truetype");
 	font-style: normal;
 }
 
 @font-face {
-	font-family: "Inter";
-	src: url("/fonts/Inter-Italic-VariableFont_opsz,wght.ttf")
+	font-family: "Bodoni Moda";
+	src: url("/fonts/BodoniModa-Italic-VariableFont_opsz,wght.ttf")
 		format("truetype");
 	font-style: italic;
 }
@@ -30,9 +29,24 @@
 	font-style: italic;
 }
 
+/* Elms Sans */
+
+@font-face {
+	font-family: "Elms Sans";
+	src: url("/fonts/ElmsSans-VariableFont_wght.ttf") format("truetype");
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Elms Sans";
+	src: url("/fonts/ElmsSans-Italic-VariableFont_wght.ttf") format("truetype");
+	font-style: italic;
+}
+
 /* Declarations */
 
 :root {
-	--font-sans: "Inter", Arial, sans-serif;
+	--font-sans: "Elms Sans", Arial, sans-serif;
 	--font-title: "Roboto Serif", Georgia, serif;
+	--font-display: "Bodoni Moda", "Times New Roman", serif;
 }

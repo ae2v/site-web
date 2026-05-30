@@ -1,1 +1,3 @@
-<!-- Page de modification d'un article du blog (markdown offert) -->
+<template>
+	<main class="min-h-screen"></main>
+</template>

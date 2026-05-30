@@ -3,14 +3,19 @@ import type { Member } from "~~/shared/models/member";
 export const useMembers = async () => {
 	const members = useState<Member[]>("membersList", () => []);
 	const error = useState<Error | null>("membersError", () => null);
+	const loading = useState<boolean>("membersLoading", () => false);
 
 	const fetchMembers = async () => {
+		loading.value = true;
+
 		try {
 			const response = await $fetch("/api/members");
 			members.value = response;
 		} catch (err: Error | unknown) {
 			console.error("Failed to fetch members:", err as Error);
 			error.value = err as Error;
+		} finally {
+			loading.value = false;
 		}
 	};
 
@@ -60,6 +65,7 @@ export const useMembers = async () => {
 	return {
 		members,
 		error,
+		loading,
 		addMember,
 		revokeMember,
 		updateMember,
