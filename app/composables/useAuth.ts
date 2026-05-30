@@ -50,7 +50,6 @@ export const useAuth = () => {
 			error.value = null;
 			return user.value;
 		} catch (err) {
-			error.value = err as Error;
 			user.value = null;
 			return null;
 		}
