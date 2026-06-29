@@ -17,11 +17,6 @@ import {
 	UserIcon,
 } from "@heroicons/vue/24/outline";
 
-defineProps<{
-	isTransparent?: boolean;
-	isFixed?: boolean;
-}>();
-
 const { user, logout } = useAuth();
 
 const doLogout = async () => {
@@ -31,51 +26,28 @@ const doLogout = async () => {
 <template>
 	<nav
 		id="navbar"
-		class="top-0 left-0 right-0 transition-all duration-200"
-		:class="
-			(isFixed ? ' fixed z-50' : 'sticky') +
-			(isTransparent
-				? ' bg-transparent h-32 px-16'
-				: ' bg-primary text-white h-24 px-12')
-		"
+		class="fixed z-50 top-0 left-0 right-0 p-4 transition-all duration-200"
 	>
-		<ul class="flex items-center gap-10 text-lg font-medium h-full w-full">
+		<ul class="flex items-center gap-10 bg-primary text-white text-lg font-medium outline-8 outline-primary/40 rounded-3xl h-20 w-full px-8">
 			<RouterLink to="/">
 				<Logo
-					class="w-auto"
-					:class="
-						isTransparent ? 'text-primary h-12' : 'text-white h-10'
-					"
+					class="text-white w-auto h-10"
 				/>
 			</RouterLink>
 			<RouterLink
 				to="/members"
-				class="navlink"
-				:class="
-					isTransparent
-						? 'hover:decoration-primary'
-						: 'hover:decoration-white'
+				class="navlink hover:decoration-primary"
 				"
 				>Membres</RouterLink
 			>
 			<RouterLink
 				to="/events"
-				class="navlink"
-				:class="
-					isTransparent
-						? 'hover:decoration-primary'
-						: 'hover:decoration-white'
-				"
+				class="navlink hover:decoration-primary"
 				>Événements</RouterLink
 			>
 			<RouterLink
 				to="/shop"
-				class="navlink"
-				:class="
-					isTransparent
-						? 'hover:decoration-primary'
-						: 'hover:decoration-white'
-				"
+				class="navlink hover:decoration-primary"
 				>Boutique</RouterLink
 			>
 
