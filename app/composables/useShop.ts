@@ -59,7 +59,7 @@ export const useCart = () => {
 	};
 };
 
-export const useItems = async () => {
+export const useItems = () => {
 	const items = useState<ShopItem[]>("itemsList", () => []);
 	const error = useState<Error | null>("itemsError", () => null);
 
@@ -130,14 +130,18 @@ export const useOrders = () => {
 	// Similar implementation for orders (fetchOrders, addOrder, deleteOrder, updateOrder)
 };
 
-export const useOffers = async () => {
+export const useOffers = () => {
 	const offers = useState<Reduction[]>("offersList", () => []);
 	const error = useState<Error | null>("offersError", () => null);
 
 	const fetchOffers = async () => {
 		try {
 			const response = await $fetch("/api/shop/offers");
-			offers.value = response;
+
+			offers.value = response.map((offer) => ({
+				...offer,
+				expiryDate: new Date(offer.expiryDate),
+			}));
 		} catch (err: Error | unknown) {
 			console.error("Failed to fetch offers:", err as Error);
 			error.value = err as Error;

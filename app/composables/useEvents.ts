@@ -1,6 +1,6 @@
 import type { Event as EventModel } from "~~/shared/models/events";
 
-export const useEvents = async () => {
+export const useEvents = () => {
 	const events = useState<EventModel[]>("eventsList", () => []);
 	const error = useState<Error | null>("eventsError", () => null);
 

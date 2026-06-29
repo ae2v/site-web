@@ -1,6 +1,6 @@
 import type { Member } from "~~/shared/models/member";
 
-export const useMembers = async () => {
+export const useMembers = () => {
 	const members = useState<Member[]>("membersList", () => []);
 	const error = useState<Error | null>("membersError", () => null);
 	const loading = useState<boolean>("membersLoading", () => false);
