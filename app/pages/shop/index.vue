@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Navbar from "~/components/layout/Navbar.vue";
 import Button from "~/components/Button.vue";
-import { ShoppingCartIcon } from "@heroicons/vue/20/solid";
+import { FunnelIcon } from "@heroicons/vue/20/solid";
 
 import ItemCard from "~/components/cards/ItemCard.vue";
 import type { ItemCategory, ShopItem } from "#shared/models/shop";
@@ -94,7 +94,7 @@ onMounted(() => {
 	fetchItems();
 
 	if (process.client) {
-		const mq = window.matchMedia("(min-width: 768px)");
+		const mq = window.matchMedia("(min-width: 1024px)");
 
 		const update = () => {
 			isDesktop.value = mq.matches;
@@ -116,24 +116,25 @@ onMounted(() => {
 </script>
 <template>
 	<Navbar />
-	<div class="flex flex-col md:flex-row gap-x-8 h-[calc(100vh-6rem)]">
+	<div class="container flex flex-col lg:flex-row gap-x-8 h-screen mx-auto p-8 pt-32">
 		<!-- Mobile filter toggle -->
-		<div class="md:hidden mb-4 flex items-center justify-between">
+		<div class="lg:hidden mb-4 flex items-center justify-between px-8">
 			<div>
 				<h2 class="text-xl font-semibold">Boutique</h2>
 				<p class="text-sm text-muted">Parcourez nos produits</p>
 			</div>
-			<button
-				@click="drawerOpen = true"
-				class="px-3 py-2 rounded-md bg-emerald-600 text-white"
-			>
-				Filtres
-			</button>
+			<Button
+				:handler="() => { drawerOpen = !drawerOpen }"
+				label="Filtres"
+				btnStyle="PRIMARY"
+				btnSize="MEDIUM"
+				:icon="FunnelIcon"
+			/>
 		</div>
 
 		<aside
 			v-show="drawerOpen || isDesktop"
-			class="shrink-0 h-full md:w-1/4 border-r border-emerald-200 bg-emerald-50 p-5 overflow-y-auto"
+			class="shrink-0 h-full lg:w-1/4 border border-emerald-200 rounded-3xl bg-emerald-50 p-6 overflow-y-auto"
 		>
 			<div class="space-y-4">
 				<div class="space-y-1">
@@ -248,29 +249,8 @@ onMounted(() => {
 			</div>
 		</aside>
 
-		<!-- Mobile overlay drawer (same aside content shown via v-show) -->
-		<div
-			v-if="drawerOpen && !isDesktop"
-			class="fixed inset-0 z-50 md:hidden"
-		>
-			<div
-				class="absolute inset-0 bg-black/40"
-				@click="drawerOpen = false"
-			></div>
-			<div
-				class="absolute left-0 top-0 bottom-0 w-4/5 bg-emerald-50 p-4 overflow-y-auto"
-			>
-				<button
-					class="mb-4 px-3 py-2 rounded-md bg-emerald-600 text-white"
-					@click="drawerOpen = false"
-				>
-					Fermer
-				</button>
-				<!-- The aside is rendered above (v-show) and will be visible; this panel just provides backdrop and close control on mobile -->
-			</div>
-		</div>
 		<main class="grow h-full overflow-y-auto">
-			<header class="flex flex-col justify-center gap-8 p-8 md:py-16">
+			<header class="flex flex-col justify-center gap-8 px-8 lg:py-8">
 				<h1 class="text-5xl font-bold font-title">Boutique</h1>
 				<p class="text-xl">
 					Découvrez nos produits exclusifs. Nous proposons une large

@@ -110,7 +110,7 @@ onMounted(async () => {
 
 <template>
 	<Navbar />
-	<main class="container mx-auto p-8 space-y-8">
+	<main class="container mx-auto p-8 space-y-8 pt-32">
 		<div v-if="isAuthLoading" class="max-w-xl mx-auto py-16 text-center">
 			<p class="text-xl text-gray-600">Chargement...</p>
 		</div>

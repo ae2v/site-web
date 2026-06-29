@@ -18,7 +18,7 @@ onMounted(() => {
 <template>
 	<Navbar />
 	<header
-		class="container flex flex-col justify-center gap-8 p-8 mx-auto md:py-16"
+		class="container flex flex-col justify-center gap-8 p-8 pt-32 mx-auto md:pb-16"
 	>
 		<h1 class="text-5xl font-bold font-title">Événements</h1>
 		<p class="text-xl">

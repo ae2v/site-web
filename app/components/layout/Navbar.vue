@@ -12,9 +12,11 @@ import { useAuth } from "~~/app/composables/useAuth";
 
 import Logo from "~/assets/logo.svg";
 import {
-	ArrowRightStartOnRectangleIcon,
 	ShoppingCartIcon,
 	UserIcon,
+	CalendarDaysIcon,
+	UsersIcon,
+	ShoppingBagIcon
 } from "@heroicons/vue/24/outline";
 
 const { user, logout } = useAuth();
@@ -28,50 +30,54 @@ const doLogout = async () => {
 		id="navbar"
 		class="fixed z-50 top-0 left-0 right-0 p-4 transition-all duration-200"
 	>
-		<ul class="flex items-center gap-10 bg-primary text-white text-lg font-medium outline-8 outline-primary/40 rounded-3xl h-20 w-full px-8">
+		<ul
+			class="container flex items-center gap-6 bg-primary text-white text-lg font-medium outline-8 outline-primary/40 rounded-3xl h-20 w-full px-8 mx-auto"
+		>
 			<RouterLink to="/">
-				<Logo
-					class="text-white w-auto h-10"
-				/>
+				<Logo class="text-white w-auto h-10" />
 			</RouterLink>
 			<RouterLink
 				to="/members"
-				class="navlink hover:decoration-primary"
-				"
-				>Membres</RouterLink
+				class="navlink flex items-center gap-2 hover:decoration-primary"
 			>
+				<UsersIcon class="w-6 h-6 inline-block" />
+				<span class="max-md:hidden">Membres</span>
+			</RouterLink>
 			<RouterLink
 				to="/events"
-				class="navlink hover:decoration-primary"
-				>Événements</RouterLink
+				class="navlink flex items-center gap-2 hover:decoration-primary"
 			>
-			<RouterLink
-				to="/shop"
-				class="navlink hover:decoration-primary"
-				>Boutique</RouterLink
-			>
+				<CalendarDaysIcon class="w-6 h-6 inline-block" />
+				<span class="max-md:hidden">Événements</span>
+			</RouterLink>
+			<RouterLink to="/shop" class="navlink flex items-center gap-2 hover:decoration-primary">
+				<ShoppingBagIcon class="w-6 h-6 inline-block" />
+				<span class="max-md:hidden">Boutique</span>
+			</RouterLink>
 
 			<div class="grow"></div>
 
 			<template v-if="user">
-				<Button
-					handler="/dashboard"
-					:label="user.account?.firstName + ' ' + user.account?.lastName"
-					btnStyle="LINK"
-					btnSize="MEDIUM"
-					:icon="UserIcon"
-				/>
+				<RouterLink
+					to="/dashboard"
+					class="btn btn-sm flex items-center gap-2"
+				>
+					<UserIcon class="w-6 h-6" />
+					<span class="max-md:hidden">
+						{{ user.account?.firstName + " " + user.account?.lastName }}
+					</span>
+				</RouterLink>
 				<RouterLink to="/shop/order" class="btn btn-sm">
-					<ShoppingCartIcon class="w-5 h-5" />
+					<ShoppingCartIcon class="w-6 h-6" />
 				</RouterLink>
 			</template>
 
 			<template v-else>
 				<RouterLink to="/auth/login" class="btn btn-sm">
-					<UserIcon class="w-8 h-8" />
+					<UserIcon class="w-6 h-6" />
 				</RouterLink>
 				<RouterLink to="/shop/order" class="btn btn-sm">
-					<ShoppingCartIcon class="w-8 h-8" />
+					<ShoppingCartIcon class="w-6 h-6" />
 				</RouterLink>
 			</template>
 		</ul>

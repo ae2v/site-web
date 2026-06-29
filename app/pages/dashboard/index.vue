@@ -4,7 +4,7 @@ import Button from "~/components/Button.vue";
 import Input from "~/components/Input.vue";
 import Select from "~/components/Select.vue";
 import { useAuth } from "~/composables/useAuth";
-import type { Department, Member } from "~~/shared/models/member";
+import type { Department } from "~~/shared/models/member";
 import type { OrderStatus } from "~~/shared/models/shop";
 
 definePageMeta({
@@ -20,6 +20,37 @@ const cancelingOrders = ref(false);
 const wipingData = ref(false);
 const pageError = ref<string | null>(null);
 const pageSuccess = ref<string | null>(null);
+
+type DashboardTab = "account" | "profile" | "orders";
+
+const tab = ref<DashboardTab>("account");
+
+const tabItems: Array<{
+	key: DashboardTab;
+	label: string;
+	description: string;
+}> = [
+	{
+		key: "account",
+		label: "Account",
+		description: "Infos personnelles et sécurité",
+	},
+	{
+		key: "profile",
+		label: "Profile",
+		description: "Fiche membre BDE",
+	},
+	{
+		key: "orders",
+		label: "Orders",
+		description: "Commandes réclamées",
+	},
+];
+
+const activeTabDescription = computed(
+	() => tabItems.find((item) => item.key === tab.value)?.description ?? "",
+);
+
 const claimedOrders = ref<
 	Array<{
 		id: number;
@@ -62,8 +93,13 @@ const statusLabel: Record<OrderStatus, string> = {
 };
 
 const memberDepartments: Department[] = ["MMI", "GEII", "INFO", "RT", "MRIT"];
+const claimedOrdersEndpoint = ["/api/shop/orders", "mine"].join("/");
 
 const isMember = computed(() => Boolean(user.value?.profile));
+
+const setTab = (value: DashboardTab) => {
+	tab.value = value;
+};
 
 const fillFormsFromUser = () => {
 	if (!user.value) return;
@@ -89,7 +125,13 @@ const loadClaimedOrders = async () => {
 	claimedOrdersError.value = null;
 
 	try {
-		claimedOrders.value = await $fetch("/api/shop/orders/mine");
+		const response = await fetch(claimedOrdersEndpoint);
+
+		if (!response.ok) {
+			throw new Error("Impossible de charger vos commandes");
+		}
+
+		claimedOrders.value = await response.json();
 	} catch (error) {
 		claimedOrdersError.value =
 			error instanceof Error
@@ -212,31 +254,32 @@ const wipeAllData = async () => {
 
 onMounted(async () => {
 	await fetchMe().catch(() => undefined);
+
 	fillFormsFromUser();
+
 	if (isMember.value) {
 		await loadClaimedOrders();
 	}
+
 	isLoading.value = false;
 });
 </script>
 
 <template>
 	<Navbar />
-	<main
-		class="min-h-screen bg-[radial-gradient(circle_at_top,rgba(255,163,26,0.12),transparent_30%),linear-gradient(180deg,#fffaf3_0%,#fff_45%,#f8fafc_100%)]"
+	<header
+		class="container flex flex-col justify-center gap-8 p-8 pt-32 mx-auto md:pb-16"
 	>
-		<section class="container mx-auto px-4 py-10 max-w-6xl space-y-8">
-			<header class="space-y-3">
-				<p class="uppercase tracking-[0.2em] text-sm text-muted">
-					Espace personnel
-				</p>
-				<h1 class="text-5xl font-bold font-title">Dashboard</h1>
-				<p class="text-lg text-muted max-w-2xl">
-					Gérez votre compte, vos commandes réclamées et vos données
-					en toute simplicité.
-				</p>
-			</header>
-
+		<h1 class="text-5xl font-bold font-title">Dashboard</h1>
+		<p class="text-lg text-muted max-w-2xl">
+			Gérez votre compte, votre profil membre et vos commandes en toute
+			simplicité.
+		</p>
+	</header>
+	<main
+		class="container min-h-screen bg-[radial-gradient(circle_at_top,rgba(255,163,26,0.12),transparent_30%),linear-gradient(180deg,#fffaf3_0%,#fff_45%,#f8fafc_100%)] mx-auto"
+	>
+		<section class="px-4 py-10 space-y-8">
 			<div v-if="isLoading" class="py-20 text-center text-gray-600">
 				Chargement...
 			</div>
@@ -256,10 +299,24 @@ onMounted(async () => {
 					{{ pageSuccess }}
 				</div>
 
-				<div
-					class="grid gap-8 lg:grid-cols-[1.35fr_0.95fr] items-start"
-				>
-					<div class="space-y-8">
+				<div class="space-y-8">
+					<nav
+						class="flex items-center gap-4 mx-auto"
+					>
+						<Button
+							v-for="item in tabItems"
+							:key="item.key"
+							:handler="() => setTab(item.key)"
+							:label="item.label"
+							:btnStyle="tab === item.key ? 'PRIMARY' : 'LINK'"
+							btnSize="SMALL"
+						/>
+					</nav>
+
+					<div
+						v-if="tab === 'account'"
+						class="grid gap-8 lg:grid-cols-[1.35fr_0.95fr] items-start"
+					>
 						<section class="bg-surface rounded-3xl p-8 space-y-6">
 							<div>
 								<h2 class="text-2xl font-bold font-title">
@@ -267,7 +324,7 @@ onMounted(async () => {
 								</h2>
 								<p class="text-muted mt-1">
 									Modifiez les informations liées à votre
-									compte.
+									compte et votre sécurité.
 								</p>
 							</div>
 
@@ -310,20 +367,78 @@ onMounted(async () => {
 							</div>
 						</section>
 
-						<section
-							v-if="isMember"
-							class="bg-surface rounded-3xl p-8 space-y-6"
-						>
-							<div>
+						<aside class="space-y-6 lg:sticky lg:top-8">
+							<section
+								class="bg-surface rounded-3xl p-8 space-y-4"
+							>
 								<h2 class="text-2xl font-bold font-title">
-									Profil membre BDE
+									Sécurité
 								</h2>
-								<p class="text-muted mt-1">
-									Vous pouvez modifier tout sauf le pôle et le
-									rôle.
+								<p class="text-muted">
+									Ces actions modifient vos données ou votre
+									session.
 								</p>
-							</div>
+								<div class="space-y-3">
+									<div class="w-full">
+										<Button
+											:handler="cancelAllOrders"
+											label="Annuler toutes mes commandes"
+											btnStyle="DANGER"
+											btnSize="MEDIUM"
+											:disabled="cancelingOrders"
+										/>
+									</div>
+									<div class="w-full">
+										<Button
+											:handler="wipeAllData"
+											label="Wipe all my data"
+											btnStyle="DANGER"
+											btnSize="MEDIUM"
+											:disabled="wipingData"
+										/>
+									</div>
+									<div class="w-full">
+										<Button
+											:handler="
+												async () => {
+													await logout();
+													await navigateTo('/');
+												}
+											"
+											label="Logout"
+											btnStyle="LINK"
+											btnSize="MEDIUM"
+										/>
+									</div>
+								</div>
+							</section>
+						</aside>
+					</div>
 
+					<section
+						v-else-if="tab === 'profile'"
+						class="bg-surface rounded-3xl p-8 space-y-6"
+					>
+						<div>
+							<h2 class="text-2xl font-bold font-title">
+								Profil membre BDE
+							</h2>
+							<p class="text-muted mt-1">
+								Vous pouvez modifier tout sauf le pôle et le
+								rôle.
+							</p>
+						</div>
+
+						<div
+							v-if="!isMember"
+							class="rounded-3xl border border-black/5 bg-white/70 p-6 text-muted"
+						>
+							Votre compte n’a pas encore de profil membre. Un
+							administrateur doit d’abord vous associer à une
+							fiche membre.
+						</div>
+
+						<template v-else>
 							<div class="grid gap-4 md:grid-cols-2">
 								<Input
 									v-model="memberForm.firstName"
@@ -409,31 +524,44 @@ onMounted(async () => {
 									/>
 								</div>
 							</div>
-						</section>
+						</template>
+					</section>
 
-						<section class="bg-surface rounded-3xl p-8 space-y-6">
-							<div
-								class="flex items-center justify-between gap-4 flex-wrap"
-							>
-								<div>
-									<h2 class="text-2xl font-bold font-title">
-										Mes commandes réclamées
-									</h2>
-									<p class="text-muted mt-1">
-										Toutes les commandes associées à votre
-										compte.
-									</p>
-								</div>
-								<div class="w-full sm:w-auto">
-									<Button
-										:handler="loadClaimedOrders"
-										label="Rafraîchir"
-										btnStyle="LINK"
-										btnSize="MEDIUM"
-									/>
-								</div>
+					<section
+						v-else
+						class="bg-surface rounded-3xl p-8 space-y-6"
+					>
+						<div
+							class="flex items-center justify-between gap-4 flex-wrap"
+						>
+							<div>
+								<h2 class="text-2xl font-bold font-title">
+									Mes commandes réclamées
+								</h2>
+								<p class="text-muted mt-1">
+									Toutes les commandes associées à votre
+									compte.
+								</p>
 							</div>
+							<div class="w-full sm:w-auto">
+								<Button
+									:handler="loadClaimedOrders"
+									label="Rafraîchir"
+									btnStyle="LINK"
+									btnSize="MEDIUM"
+								/>
+							</div>
+						</div>
 
+						<div
+							v-if="!isMember"
+							class="rounded-3xl border border-black/5 bg-white/70 p-6 text-muted"
+						>
+							Les commandes réclamées apparaîtront ici une fois
+							votre profil membre associé.
+						</div>
+
+						<template v-else>
 							<div v-if="claimedOrdersError" class="text-red-600">
 								{{ claimedOrdersError }}
 							</div>
@@ -500,53 +628,8 @@ onMounted(async () => {
 									</div>
 								</article>
 							</div>
-						</section>
-					</div>
-
-					<aside class="space-y-6 lg:sticky lg:top-8">
-						<section class="bg-surface rounded-3xl p-8 space-y-4">
-							<h2 class="text-2xl font-bold font-title">
-								Sécurité
-							</h2>
-							<p class="text-muted">
-								Ces actions modifient vos données ou votre
-								session.
-							</p>
-							<div class="space-y-3">
-								<div class="w-full">
-									<Button
-										:handler="cancelAllOrders"
-										label="Annuler toutes mes commandes"
-										btnStyle="DANGER"
-										btnSize="MEDIUM"
-										:disabled="cancelingOrders"
-									/>
-								</div>
-								<div class="w-full">
-									<Button
-										:handler="wipeAllData"
-										label="Wipe all my data"
-										btnStyle="DANGER"
-										btnSize="MEDIUM"
-										:disabled="wipingData"
-									/>
-								</div>
-								<div class="w-full">
-									<Button
-										:handler="
-											async () => {
-												await logout();
-												await navigateTo('/');
-											}
-										"
-										label="Logout"
-										btnStyle="LINK"
-										btnSize="MEDIUM"
-									/>
-								</div>
-							</div>
-						</section>
-					</aside>
+						</template>
+					</section>
 				</div>
 			</template>
 		</section>
