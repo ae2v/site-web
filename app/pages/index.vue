@@ -11,12 +11,6 @@ import { useInView } from "motion-v";
 
 const { events } = useEvents();
 
-useHead({
-	bodyAttrs: {
-		class: "bg-[url('/hero_bde.jpg')] bg-cover bg-center bg-no-repeat bg-fixed",
-	},
-});
-
 const title = "BDE de Vélizy";
 const description =
 	"Découvrez nos événements, nos projets et notre équipe. Rejoignez-nous pour vivre une expérience étudiante inoubliable !";
@@ -48,6 +42,9 @@ useSeoMeta({
 useHead({
 	htmlAttrs: {
 		lang: "fr",
+	},
+	bodyAttrs: {
+		class: "bg-[url('/hero_bde.jpg')] bg-cover bg-center bg-no-repeat bg-fixed",
 	},
 	link: [
 		{
