@@ -9,6 +9,56 @@ definePageMeta({
 	middleware: "auth",
 });
 
+const title = "BDE de Vélizy - Gestion des membres";
+const description =
+	"Découvrez nos événements, nos projets et notre équipe. Rejoignez-nous pour vivre une expérience étudiante inoubliable !";
+const url = "https://ae2v.ejnalo.me/manage/members"; // https://bde-velizy.fr/manage/members
+const image = "/hero_bde.jpg";
+
+useSeoMeta({
+	// SEO
+	title,
+	description,
+	robots: "index, follow",
+
+	// Open Graph
+	ogTitle: title,
+	ogDescription: description,
+	ogType: "website",
+	ogUrl: url,
+	ogImage: image,
+	ogSiteName: "BDE de Vélizy",
+	ogLocale: "fr_FR",
+
+	// Twitter
+	twitterCard: "summary_large_image",
+	twitterTitle: title,
+	twitterDescription: description,
+	twitterImage: image,
+});
+
+useHead({
+	htmlAttrs: {
+		lang: "fr",
+	},
+	link: [
+		{
+			rel: "canonical",
+			href: url,
+		},
+		{
+			rel: "icon",
+			href: "/favicon.ico",
+		},
+	],
+	meta: [
+		{
+			name: "theme-color",
+			content: "#de0a2d",
+		},
+	],
+});
+
 const { user } = useAuth();
 const { loading, error, members, fetchMembers } = await useMembers();
 

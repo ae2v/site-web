@@ -79,11 +79,60 @@ const loadOrder = async () => {
 };
 
 onMounted(loadOrder);
-</script>
 
+const title = "BDE de Vélizy - Suivi de commande";
+const description =
+	"Découvrez nos événements, nos projets et notre équipe. Rejoignez-nous pour vivre une expérience étudiante inoubliable !";
+const url = "https://ae2v.ejnalo.me/shop/order/[id]"; // https://bde-velizy.fr/shop/order/[id]
+const image = "/hero_bde.jpg";
+
+useSeoMeta({
+	// SEO
+	title,
+	description,
+	robots: "index, follow",
+
+	// Open Graph
+	ogTitle: title,
+	ogDescription: description,
+	ogType: "website",
+	ogUrl: url,
+	ogImage: image,
+	ogSiteName: "BDE de Vélizy",
+	ogLocale: "fr_FR",
+
+	// Twitter
+	twitterCard: "summary_large_image",
+	twitterTitle: title,
+	twitterDescription: description,
+	twitterImage: image,
+});
+
+useHead({
+	htmlAttrs: {
+		lang: "fr",
+	},
+	link: [
+		{
+			rel: "canonical",
+			href: url,
+		},
+		{
+			rel: "icon",
+			href: "/favicon.ico",
+		},
+	],
+	meta: [
+		{
+			name: "theme-color",
+			content: "#de0a2d",
+		},
+	],
+});
+</script>
 <template>
 	<Navbar />
-	<main class="container mx-auto p-8">
+	<main class="container mx-auto p-8 pt-32">
 		<div v-if="isLoading" class="max-w-2xl mx-auto py-16 text-center">
 			<p class="text-xl text-gray-600">Chargement de la commande...</p>
 		</div>

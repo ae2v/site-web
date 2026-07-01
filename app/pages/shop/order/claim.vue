@@ -91,11 +91,60 @@ onMounted(async () => {
 	await claimOrder();
 	isLoading.value = false;
 });
-</script>
 
+const title = "BDE de Vélizy - Relier une commande";
+const description =
+	"Associez votre commande à votre compte pour la suivre depuis votre espace. Connectez-vous et réclamez votre commande en toute simplicité.";
+const url = "https://ae2v.ejnalo.me/shop/order/claim"; // https://bde-velizy.fr/shop/order/claim
+const image = "/hero_bde.jpg";
+
+useSeoMeta({
+	// SEO
+	title,
+	description,
+	robots: "index, follow",
+
+	// Open Graph
+	ogTitle: title,
+	ogDescription: description,
+	ogType: "website",
+	ogUrl: url,
+	ogImage: image,
+	ogSiteName: "BDE de Vélizy",
+	ogLocale: "fr_FR",
+
+	// Twitter
+	twitterCard: "summary_large_image",
+	twitterTitle: title,
+	twitterDescription: description,
+	twitterImage: image,
+});
+
+useHead({
+	htmlAttrs: {
+		lang: "fr",
+	},
+	link: [
+		{
+			rel: "canonical",
+			href: url,
+		},
+		{
+			rel: "icon",
+			href: "/favicon.ico",
+		},
+	],
+	meta: [
+		{
+			name: "theme-color",
+			content: "#de0a2d",
+		},
+	],
+});
+</script>
 <template>
 	<Navbar />
-	<main class="container mx-auto p-8">
+	<main class="container mx-auto p-8 pt-32">
 		<section class="max-w-2xl mx-auto bg-surface rounded-3xl p-8 space-y-6">
 			<div>
 				<h1 class="text-4xl font-bold font-title">

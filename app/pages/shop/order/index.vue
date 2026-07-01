@@ -106,8 +106,57 @@ onMounted(async () => {
 		await loadClaimedOrders();
 	}
 });
-</script>
 
+const title = "BDE de Vélizy - Suivi de commande";
+const description =
+	"Suivez l'état de votre commande au BDE de Vélizy. Accédez aux détails de votre commande et à l'historique des transactions.";
+const url = "https://ae2v.ejnalo.me/shop/order"; // https://bde-velizy.fr/shop/order
+const image = "/hero_bde.jpg";
+
+useSeoMeta({
+	// SEO
+	title,
+	description,
+	robots: "index, follow",
+
+	// Open Graph
+	ogTitle: title,
+	ogDescription: description,
+	ogType: "website",
+	ogUrl: url,
+	ogImage: image,
+	ogSiteName: "BDE de Vélizy",
+	ogLocale: "fr_FR",
+
+	// Twitter
+	twitterCard: "summary_large_image",
+	twitterTitle: title,
+	twitterDescription: description,
+	twitterImage: image,
+});
+
+useHead({
+	htmlAttrs: {
+		lang: "fr",
+	},
+	link: [
+		{
+			rel: "canonical",
+			href: url,
+		},
+		{
+			rel: "icon",
+			href: "/favicon.ico",
+		},
+	],
+	meta: [
+		{
+			name: "theme-color",
+			content: "#de0a2d",
+		},
+	],
+});
+</script>
 <template>
 	<Navbar />
 	<main class="container mx-auto p-8 space-y-8 pt-32">
@@ -155,7 +204,6 @@ onMounted(async () => {
 					@keyup.enter="goToOrder"
 				/>
 			</div>
-
 
 			<p v-if="error" class="text-red-600 text-sm">{{ error }}</p>
 

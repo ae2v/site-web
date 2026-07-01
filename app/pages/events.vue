@@ -5,10 +5,60 @@ import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/vue/20/solid";
 
 import EventCard from "~/components/cards/EventCard.vue";
 
-const { fetchEvents, events, error } = await useEvents();
+const { fetchEvents, events, error } = useEvents();
 
 definePageMeta({
 	layout: "default",
+});
+
+const title = "BDE de Vélizy - Événements";
+const description =
+	"Liste des événements organisés par le BDE de Vélizy. Découvrez nos événements à venir et passés, et rejoignez-nous pour vivre une expérience étudiante inoubliable !";
+const url = "https://ae2v.ejnalo.me/events"; // https://bde-velizy.fr/events
+const image = "/hero_bde.jpg";
+
+useSeoMeta({
+	// SEO
+	title,
+	description,
+	robots: "index, follow",
+
+	// Open Graph
+	ogTitle: title,
+	ogDescription: description,
+	ogType: "website",
+	ogUrl: url,
+	ogImage: image,
+	ogSiteName: "BDE de Vélizy",
+	ogLocale: "fr_FR",
+
+	// Twitter
+	twitterCard: "summary_large_image",
+	twitterTitle: title,
+	twitterDescription: description,
+	twitterImage: image,
+});
+
+useHead({
+	htmlAttrs: {
+		lang: "fr",
+	},
+	link: [
+		{
+			rel: "canonical",
+			href: url,
+		},
+		{
+			rel: "icon",
+			href: "/favicon.ico",
+		},
+	],
+	meta: [
+		{
+			name: "theme-color",
+			content: "#de0a2d",
+		},
+	],
 });
 
 onMounted(() => {
@@ -35,10 +85,19 @@ onMounted(() => {
 	</header>
 	<main class="container min-h-screen mx-auto p-8 space-y-16">
 		<section>
-			<h2 class="text-4xl font-bold font-title mb-8">Événements</h2>
+			<h2 class="text-4xl font-bold font-title mb-8">À venir</h2>
 			<div class="grid gap-4 lg:grid-cols-2">
 				<EventCard
-					v-for="event in events"
+					v-for="event in events.filter((e) => new Date(e.date) >= new Date())"
+					:event=event
+				/>
+			</div>
+		</section>
+		<section>
+			<h2 class="text-4xl font-bold font-title mb-8">Passés</h2>
+			<div class="grid gap-4 lg:grid-cols-2">
+				<EventCard
+					v-for="event in events.filter((e) => new Date(e.date) < new Date())"
 					:event=event
 				/>
 			</div>

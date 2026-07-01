@@ -32,7 +32,7 @@ const applicableOffers = computed(() => {
 </script>
 <template>
 	<Navbar />
-	<header class="container mx-auto p-8 space-y-16">
+	<header class="container mx-auto p-8 pt-32 space-y-16">
 		<section class="flex items-center" v-if="product">
 			<img
 				:src="
