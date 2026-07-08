@@ -104,6 +104,16 @@ export default defineEventHandler(async (event) => {
 		}),
 	);
 
+	let customerAccountId = undefined;
+
+	try {
+		let session: AuthPayload = requireAuth(event);
+
+		customerAccountId = session.account?.id || undefined;
+	} catch (error) {
+		// Si pas login on laisse la commande se faire en tant qu'invité, donc on ne fait rien ici
+	}
+
 	try {
 		const createdOrders = [] as Array<{ id: number; orderCode: string }>;
 
@@ -116,6 +126,7 @@ export default defineEventHandler(async (event) => {
 					customerFirstName: customerFirstName.trim(),
 					customerLastName: customerLastName.trim(),
 					customerEmail: customerEmail.trim().toLowerCase(),
+					customerAccountId,
 					date: new Date(),
 					status: "PENDING",
 					itemId: item.variantId,
