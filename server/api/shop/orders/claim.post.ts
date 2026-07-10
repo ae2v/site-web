@@ -2,8 +2,10 @@ import { createError, getQuery, readBody } from "h3";
 import { and, eq } from "drizzle-orm";
 
 import { useDb } from "~~/server/db/client";
-import { orders } from "~~/server/db/schema";
+import { itemVariants, orders } from "~~/server/db/schema";
 import { requireAuth } from "~~/server/utils/auth";
+import { sendCommandClaimEmail } from "~~/server/utils/mail";
+import { OrderStatus } from "~~/shared/models/shop";
 
 const normalizeValue = (value: unknown) => {
 	if (Array.isArray(value)) {
@@ -69,12 +71,14 @@ export default defineEventHandler(async (event) => {
 
 	const updated = await db
 		.update(orders)
-		.set({ customerAccountId: auth.account.id })
+		.set({
+			customerAccountId: auth.account.id,
+			customerEmail: auth.account.email,
+			customerFirstName: auth.account.firstName,
+			customerLastName: auth.account.lastName,
+		})
 		.where(eq(orders.id, orderId))
-		.returning({
-			id: orders.id,
-			customerAccountId: orders.customerAccountId,
-		});
+		.returning();
 
 	if (updated.length === 0) {
 		throw createError({
@@ -82,6 +86,19 @@ export default defineEventHandler(async (event) => {
 			statusMessage: "This order is already claimed.",
 		});
 	}
+
+	await sendCommandClaimEmail(
+		{
+			...updated[0]!,
+			status: updated[0]!.status as OrderStatus,
+		},
+		await db
+			.select()
+			.from(itemVariants)
+			.where(eq(itemVariants.id, updated[0]!.itemId))
+			.limit(1)
+			.then((res) => res[0]!),
+	);
 
 	return {
 		ok: true,

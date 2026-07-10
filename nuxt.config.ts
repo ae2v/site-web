@@ -13,6 +13,10 @@ export default defineNuxtConfig({
 			supabaseUrl: "",
 			supabaseAnonKey: "",
 		},
+		private: {
+			resendApiKey: process.env.RESEND_API_KEY || "",
+			senderEmail: process.env.RESEND_SENDER_EMAIL || "",
+		},
 	},
 	vite: {
 		plugins: [tailwindcss(), svgLoader()],

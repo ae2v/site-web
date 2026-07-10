@@ -3,6 +3,8 @@ import { useDb } from "~~/server/db/client";
 import { itemVariants, orders } from "~~/server/db/schema";
 import { eq } from "drizzle-orm";
 
+import { sendCommandConfirmationEmail } from "~~/server/utils/mail";
+
 const ORDER_CODE_LENGTH = 8;
 
 const createRawCode = () =>
@@ -136,6 +138,28 @@ export default defineEventHandler(async (event) => {
 				.returning({ id: orders.id, orderCode: orders.orderCode });
 
 			createdOrders.push(created[0]!);
+
+			sendCommandConfirmationEmail(
+				{
+					id: createdOrders[0]!.id,
+					orderCode: createdOrders[0]!.orderCode,
+					customerFirstName: customerFirstName.trim(),
+					customerLastName: customerLastName.trim(),
+					customerEmail: customerEmail.trim().toLowerCase(),
+					date: new Date(),
+					status: "PENDING",
+					itemId: validatedItems[0]!.variantId,
+					quantity: validatedItems[0]!.quantity,
+					reductionId: null,
+					pickupTime: null,
+				},
+				await db
+					.select()
+					.from(itemVariants)
+					.where(eq(itemVariants.id, validatedItems[0]!.variantId))
+					.limit(1)
+					.then((res) => res[0]!),
+			);
 		}
 
 		return {
