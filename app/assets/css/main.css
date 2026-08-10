@@ -13,8 +13,15 @@
 	/* Brand */
 	--color-primary: var(--clr-primary);
 	--color-primary-dark: var(--clr-primary-dark);
+	--color-primary-darker: var(--clr-primary-darker);
 	--color-primary-light: var(--clr-primary-light);
 	--color-primary-lighter: var(--clr-primary-lighter);
+
+	--color-secondary: var(--clr-secondary);
+	--color-secondary-dark: var(--clr-secondary-dark);
+	--color-secondary-darker: var(--clr-secondary-darker);
+	--color-secondary-light: var(--clr-secondary-light);
+	--color-secondary-lighter: var(--clr-secondary-lighter);
 
 	--color-MMI: var(--clr-MMI);
 	--color-MMI-light: var(--clr-MMI-light);

@@ -1,52 +1,53 @@
-/* Bodoni Moda */
+/* Albireo */
 
 @font-face {
-	font-family: "Bodoni Moda";
-	src: url("/fonts/BodoniModa-VariableFont_opsz,wght.ttf") format("truetype");
+	font-family: "Albireo Extra Cond";
+	src: url("/fonts/Albireo-Extra-Cond-Black.otf") format("opentype");
+	font-style: normal;
+}
+
+
+/* Anton */
+
+@font-face {
+	font-family: "Anton";
+	src: url("/fonts/Anton-Regular.ttf") format("truetype");
+	font-style: normal;
+}
+
+/* Bebas Neue Pro Expanded */
+
+@font-face {
+	font-family: "Bebas Neue Pro Expanded";
+	src: url("/fonts/BebasNeueProExpanded-Extrabold.ttf") format("truetype");
 	font-style: normal;
 }
 
 @font-face {
-	font-family: "Bodoni Moda";
-	src: url("/fonts/BodoniModa-Italic-VariableFont_opsz,wght.ttf")
-		format("truetype");
+	font-family: "Bebas Neue Pro Expanded";
+	src: url("/fonts/BebasNeueProExpanded-Extrabold-Italic.ttf") format("truetype");
 	font-style: italic;
 }
 
-/* Roboto Serif */
+/* Raleway */
 
 @font-face {
-	font-family: "Roboto Serif";
-	src: url("/fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf")
-		format("truetype");
+	font-family: "Raleway";
+	src: url("/fonts/Raleway-VariableFont_wght.ttf") format("truetype");
 	font-style: normal;
 }
 
 @font-face {
-	font-family: "Roboto Serif";
-	src: url("/fonts/RobotoSerif-Italic-VariableFont_GRAD,opsz,wdth,wght.ttf")
-		format("truetype");
-	font-style: italic;
-}
-
-/* Elms Sans */
-
-@font-face {
-	font-family: "Elms Sans";
-	src: url("/fonts/ElmsSans-VariableFont_wght.ttf") format("truetype");
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "Elms Sans";
-	src: url("/fonts/ElmsSans-Italic-VariableFont_wght.ttf") format("truetype");
+	font-family: "Raleway";
+	src: url("/fonts/Raleway-Italic-VariableFont_wght.ttf") format("truetype");
 	font-style: italic;
 }
 
 /* Declarations */
 
 :root {
-	--font-sans: "Elms Sans", Arial, sans-serif;
-	--font-title: "Roboto Serif", Georgia, serif;
-	--font-display: "Bodoni Moda", "Times New Roman", serif;
+	--font-sans: "Raleway", Arial, sans-serif;
+	--font-display: "Albireo Extra Cond", sans-serif;
+	--font-title: "Anton", Georgia, serif;
+	--font-subtitle: "Bebas Neue Pro Expanded", Georgia, serif;
 }

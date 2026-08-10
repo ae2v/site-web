@@ -1,9 +1,16 @@
 :root {
 	/* Brand */
-	--clr-primary: #de0a2d;
-	--clr-primary-dark: #b80825;
-	--clr-primary-light: #f62d4e;
-	--clr-primary-lighter: #f8667e;
+	--clr-primary: #d60106;
+	--clr-primary-dark: #c00106;
+	--clr-primary-darker: #aa0005;
+	--clr-primary-light: #e31820;
+	--clr-primary-lighter: #ef3039;
+
+	--clr-secondary: #bce707;
+	--clr-secondary-dark: #a9cb06;
+	--clr-secondary-darker: #96af04;
+	--clr-secondary-light: #d1f32c;
+	--clr-secondary-lighter: #e6ff50;
 
 	--clr-MMI: #54137a;
 	--clr-MMI-light: #771bad;

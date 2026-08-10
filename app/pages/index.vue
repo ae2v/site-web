@@ -6,8 +6,16 @@ import EventCard from "~/components/cards/EventCard.vue";
 
 import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/vue/20/solid";
 
+import InstagramIcon from "~/assets/social/instagram.svg";
+import GithubIcon from "~/assets/social/github.svg";
+import SnapchatIcon from "~/assets/social/snapchat.svg";
+import LinkedInIcon from "~/assets/social/linkedin.svg";
+import FacebookIcon from "~/assets/social/facebook.svg";
+import DiscordIcon from "~/assets/social/discord.svg";
+
 import { ref } from "vue";
 import { useInView } from "motion-v";
+import { EnvelopeIcon } from "@heroicons/vue/24/outline";
 
 const { events } = useEvents();
 
@@ -109,6 +117,13 @@ const isHeaderVisible = useInView(headerRef, {
 			<h2 class="text-4xl font-bold font-title text-center">
 				Où sommes-nous ?
 			</h2>
+			<div class="text-center">
+				<p class="text-xl">
+					Nous sommes situés à l'Université de Vélizy, dans le
+					département des Yvelines (78), en France. Venez nous rendre
+					visite pour découvrir nos projets et événements !
+				</p>
+			</div>
 			<div class="flex flex-col items-center gap-4 max-w-4xl mx-auto">
 				<iframe
 					src="https://www.google.com/maps?q=48.78247159481812, 2.2176058243779475&hl=fr&z=15&output=embed"
@@ -123,6 +138,68 @@ const isHeaderVisible = useInView(headerRef, {
 					btnStyle="PRIMARY"
 					btnSize="MEDIUM"
 				/>
+			</div>
+			<div class="text-center">
+				<p class="text-xl">
+					Vous pouvez aussi nous trouver sur les réseaux sociaux
+				</p>
+				<div class="flex justify-center gap-4 mt-4">
+					<a
+						href="https://www.instagram.com/bde.velizy"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<InstagramIcon class="w-8 h-8" />
+					</a>
+
+					<a
+						href="https://story.snapchat.com/s/bde.velizy"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<SnapchatIcon class="w-8 h-8" />
+					</a>
+
+					<a
+						href="/go/discord"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<DiscordIcon class="w-8 h-8" />
+					</a>
+
+					<a
+						href="https://www.facebook.com/Ae2velizy"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<FacebookIcon class="w-8 h-8" />
+					</a>
+
+					<a
+						href="https://www.linkedin.com/company/bde-velizy/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<LinkedInIcon class="w-8 h-8" />
+					</a>
+
+					<a
+						href="https://github.com/AE2V"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<GithubIcon class="w-8 h-8" />
+					</a>
+
+					<a
+						href="mailto:ae2v.asso@gmail.com"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<EnvelopeIcon class="w-8 h-8" />
+					</a>
+				</div>
 			</div>
 		</section>
 	</main>
