@@ -139,3 +139,4 @@ dist
 /drizzle
 .vercel
 .env*
+.output/
